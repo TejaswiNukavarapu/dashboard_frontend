@@ -85,7 +85,7 @@ export default function Teamlead() {
   const fetchEmployeeCount = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/team/team/${userDetails.teamId[0]}`,
+        `${import.meta.env.VITE_BACKEND_URL}/team/team/${userDetails.teamId[0]}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const result = await res.json();

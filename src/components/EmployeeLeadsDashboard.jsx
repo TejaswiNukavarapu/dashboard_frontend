@@ -24,7 +24,7 @@ const EmployeeLeadsDashboard = () => {
       setLoading(true);
       console.log('Fetching leads for employee:', loggedInUserId);
       
-      const response = await fetch(`http://localhost:3000/lead-assignment/test/employee/${loggedInUserId}/csv-leads`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/lead-assignment/test/employee/${loggedInUserId}/csv-leads`, {
         method: 'GET',
         mode: 'cors',
         headers: {

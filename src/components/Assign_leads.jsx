@@ -22,7 +22,7 @@ const AssignLeadToMembers = () => {
   const fetchLeadTypes = async () => {
     try {
       const res = await fetch(
-        "http://localhost:3000/lead-assignment/test/lead-types-simple"
+        `${import.meta.env.VITE_BACKEND_URL}/lead-assignment/test/lead-types-simple`
       );
       const data = await res.json();
       setLeadTypes(data.leadTypes || []);
@@ -94,7 +94,7 @@ const AssignLeadToMembers = () => {
         const type = selectedLeadType.trim().toLowerCase();
 
         if (type.includes("sales")) {
-          apiUrl = "http://localhost:3000/saleslead/assign";
+          apiUrl = `${import.meta.env.VITE_BACKEND_URL}/saleslead/assign`;
         } else if (
           type.includes("lead") ||
           type.includes("gen") ||
@@ -102,7 +102,7 @@ const AssignLeadToMembers = () => {
           type.includes("leadgen") ||
           type.includes("lead-gen")
         ) {
-          apiUrl = "http://localhost:3000/leadgen/leadgen/assign";
+          apiUrl = `${import.meta.env.VITE_BACKEND_URL}/leadgen/leadgen/assign`;
         } else {
           showMessage("Invalid lead type selected", "error");
           setLoading(false);

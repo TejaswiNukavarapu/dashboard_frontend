@@ -25,7 +25,7 @@ const Announcements = () => {
   const fetchData = async (selectedMonth = month) => {
     try {
       setLoading(true);
-      const url = `http://localhost:3000/announcement/announcement?month=${selectedMonth}&page=${page}&limit=${limit}`;
+      const url = `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement?month=${selectedMonth}&page=${page}&limit=${limit}`;
 
       const response = await fetch(url);
       const result = await response.json();
@@ -66,7 +66,7 @@ const Announcements = () => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          `http://localhost:3000/announcement/announcement/${id}`,
+          `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement/${id}`,
           { method: "DELETE" }
         );
         if (!response.ok) {
@@ -238,7 +238,7 @@ const Announcements = () => {
               ✕
             </button>
             <img
-              src={`http://localhost:3000${showImage}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${showImage}`}
               alt="Announcement"
               className="max-h-[80vh] w-auto mx-auto"
             />

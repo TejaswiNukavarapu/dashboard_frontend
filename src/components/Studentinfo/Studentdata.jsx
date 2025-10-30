@@ -28,7 +28,7 @@ export default function Studentdata() {
   const fetchStudents = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/student/allstudent?search=${search}&course=${course}&programType=${programType}&month=${month}&page=${page}&limit=${limit}`
+        `${import.meta.env.VITE_BACKEND_URL}/student/allstudent?search=${search}&course=${course}&programType=${programType}&month=${month}&page=${page}&limit=${limit}`
       );
       if (res.ok) {
         const result = await res.json();
@@ -76,7 +76,7 @@ export default function Studentdata() {
     formData.append("file", fileToUpload);
 
     try {
-      const res = await fetch("http://localhost:3000/student/studentinfo", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/student/studentinfo`, {
         method: "POST",
         body: formData,
       });
@@ -97,7 +97,7 @@ export default function Studentdata() {
     setPaymentStatus(newStatus);
 
     try {
-      const update = await fetch(`http://localhost:3000/student/student/${id}`, {
+      const update = await fetch(`${import.meta.env.VITE_BACKEND_URL}/student/student/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

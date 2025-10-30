@@ -17,7 +17,7 @@ const MembersInfo = () => {
             if (!userDetails?.teamId?.[0]) return; 
             
             const response = await fetch(
-                `http://localhost:3000/team/team/${userDetails.teamId[0]}`,
+                `${import.meta.env.VITE_BACKEND_URL}/team/team/${userDetails.teamId[0]}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 

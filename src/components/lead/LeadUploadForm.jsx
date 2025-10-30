@@ -163,7 +163,7 @@ export default function LeadUploadForm({ token = "", role = "Admin" }) {
       const form = new FormData();
       form.append("file", file);
       form.append("leadType", leadType);
-      const res = await fetch(`${BE}/student/studentinfo`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/student/studentinfo`, {
         method: "POST",
         headers: { "x-user-id": userDetails?._id || "" }, // server handles role restriction too
         body: form,

@@ -246,14 +246,14 @@ const DpsDataPage = ({ onAddDps }) => {
         let url = "";
         if (role === "Intern") {
           // Interns only see their own data
-          url = `http://localhost:3000/dps/dps/intern/${userId}`;
+          url = `${import.meta.env.VITE_BACKEND_URL}/dps/dps/intern/${userId}`;
           const res = await fetch(url);
           const result = await res.json();
           setData(result.dpsByOne || []);
           setTotalPages(1);
         } else {
           // Admin/PostSales/Operations can view all
-          url = `http://localhost:3000/dps/all?page=${page}&limit=${limit}`;
+          url = `${import.meta.env.VITE_BACKEND_URL}/dps/all?page=${page}&limit=${limit}`;
           if (preferredMonth) url += `&preferredProgramMonth=${preferredMonth}`;
           const response = await fetch(url);
           const result = await response.json();
@@ -270,7 +270,7 @@ const DpsDataPage = ({ onAddDps }) => {
     const fetchAllMembers = async () => {
       try {
         if (role !== "Intern") {
-          const allM = await fetch(`http://localhost:3000/dps/getAll/dps`);
+          const allM = await fetch(`${import.meta.env.VITE_BACKEND_URL}/dps/getAll/dps`);
           const res = await allM.json();
           setAllMembers(res.allEmployees);
         }
@@ -286,7 +286,7 @@ const DpsDataPage = ({ onAddDps }) => {
   // Fetch DPS data by specific employee (for admin)
   const dpsByIntern = async (empId) => {
     try {
-      const res = await fetch(`http://localhost:3000/dps/dps/intern/${empId}`);
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/dps/dps/intern/${empId}`);
       const opt = await res.json();
       setSingleEmpData(opt.dpsByOne || []);
     } catch (e) {

@@ -33,7 +33,7 @@ function MarkAttendance() {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("http://localhost:3000/attendence/attendence", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/attendence/attendence`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(employees),

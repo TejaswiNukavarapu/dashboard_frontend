@@ -7,7 +7,7 @@ export default function AnnouncementsOverView() {
   const fetchImage = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/announcement/announcement"
+        `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement`
       );
       const result = await response.json();
       console.log("announcement", result);
@@ -51,7 +51,7 @@ export default function AnnouncementsOverView() {
         {latestAnnouncement ? (
           latestAnnouncement.image ? (
             <img
-              src={`http://localhost:3000${latestAnnouncement.image}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${latestAnnouncement.image}`}
               alt="Announcement"
               className="w-[23%] object-cover h-[10%] rounded-md mt-2"
             />

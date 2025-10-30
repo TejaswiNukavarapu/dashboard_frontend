@@ -37,7 +37,7 @@ function AttendanceCalendar({ employee: propEmployee }) {
       setError(null);
       try {
         const res = await fetch(
-          `http://localhost:3000/attendence/attendence/${employee._id}?month=${selectedMonth}`,
+          `${import.meta.env.VITE_BACKEND_URL}/attendence/attendence/${employee._id}?month=${selectedMonth}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

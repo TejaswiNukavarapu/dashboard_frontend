@@ -25,7 +25,7 @@ const SalesLeads = () => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res = await fetch('http://localhost:3000/team/team');
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/team/team`);
         if (!res.ok) throw new Error('Failed to fetch teams');
         const data = await res.json();
 
@@ -57,7 +57,7 @@ const SalesLeads = () => {
 
     const fetchTeamMembers = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/team/team/${selectedTeam._id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/team/team/${selectedTeam._id}`);
         if (!res.ok) throw new Error('Failed to fetch team members');
         const data = await res.json();
 
@@ -89,7 +89,7 @@ const SalesLeads = () => {
       if (username) params.append('username', username);
 
       const res = await fetch(
-        `http://localhost:3000/saleslead/allLeads?page=${page}&limit=${limit}&${params.toString()}`,
+        `${import.meta.env.VITE_BACKEND_URL}/saleslead/allLeads?page=${page}&limit=${limit}&${params.toString()}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('session_token')}` },
         }

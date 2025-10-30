@@ -19,7 +19,7 @@ export default function Superadmin() {
   useEffect(() => {
     async function fetchRevenueData() {
       try {
-        const response = await fetch('http://localhost:3000/api/pitched/alternative')
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pitched/alternative`)
         const data = await response.json()
         setRevenueData(data.projectedRevenue || 0)
       } catch (error) {
@@ -33,7 +33,7 @@ export default function Superadmin() {
   useEffect(() => {
     async function fetchPaidData() {
       try {
-        const response = await fetch('http://localhost:3000/api/paid/amount')
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/paid/amount`)
         const data = await response.json()
         setPaidData(data.paidAmount || 0)
       } catch (error) {
@@ -47,7 +47,7 @@ export default function Superadmin() {
   useEffect(() => {
     async function fetchStudentCount() {
       try {
-        const response = await fetch('http://localhost:3000/api/student/count')
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/student/count`)
         const data = await response.json()
         setStudentCount(data.count || 0)
       } catch (error) {
@@ -61,7 +61,7 @@ export default function Superadmin() {
   useEffect(() => {
     async function fetchInternCount() {
       try {
-        const response = await fetch('http://localhost:3000/api/interncount')
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interncount`)
         const data = await response.json()
         setInternCount(data.total || 0)
       } catch (error) {

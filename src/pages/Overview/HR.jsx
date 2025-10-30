@@ -32,7 +32,7 @@ export default function HROverView() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/totalEmployeeCount`)
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/totalEmployeeCount`)
         if (!response.ok) {
           throw new Error(`http error! status:${response.status}`)
         }
@@ -49,7 +49,7 @@ export default function HROverView() {
   const handleDateChange = async () => {
     console.log("Attendence Data", selectedDate.current.value)
     try {
-      const response = await fetch(`http://localhost:3000/api/attendanceStatusByDate?date=${selectedDate.current.value}`)
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/attendanceStatusByDate?date=${selectedDate.current.value}`)
       if (!response.ok) {
         throw new Error(`http error! status:${response.status}`)
       }

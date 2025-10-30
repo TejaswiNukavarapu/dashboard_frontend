@@ -9,7 +9,7 @@ function AddAttendance() {
   // Fetch employees
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/user/details", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/details`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -67,7 +67,7 @@ function AddAttendance() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/attendence/attendence",
+        `${import.meta.env.VITE_BACKEND_URL}/attendence/attendence`,
         {
           method: "POST",
           headers: {

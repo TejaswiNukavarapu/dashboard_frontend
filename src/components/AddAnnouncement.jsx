@@ -40,8 +40,8 @@ const AddAnnouncement = ({ onClose, refreshData, editAnnocement }) => {
    try {
      const method = editAnnocement ? "PUT" : "POST";
      const url = editAnnocement
-       ? `http://localhost:3000/announcement/announcement/${editAnnocement._id}`
-       : "http://localhost:3000/announcement/announcement";
+       ? `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement/${editAnnocement._id}`
+       : `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement`;
        
 
      const response = await fetch(url, {

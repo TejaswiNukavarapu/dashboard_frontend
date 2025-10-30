@@ -20,7 +20,7 @@ export default function useFetchEmployees(selectedMonth) {
         if (selectedMonth) params.append("month", selectedMonth);
         if (userDetails.officeLocation) params.append("location", userDetails.officeLocation);
 
-        const url = `http://localhost:3000/api/Allusers?${params.toString()}`;
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/Allusers?${params.toString()}`;
         console.log("Fetching employees from:", url);
 
         const response = await fetch(url);
