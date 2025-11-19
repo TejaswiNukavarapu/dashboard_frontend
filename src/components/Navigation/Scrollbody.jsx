@@ -16,7 +16,7 @@ const OptionsList = [
             "Team Lead" , 
             "Intern" , 
             "Post Sales" , 
-            "Digital Marteking"
+            "Digital Marketing"
          ],
   },
   {
@@ -31,7 +31,7 @@ const OptionsList = [
             "Team Lead" , 
             "Intern" , 
             "Post Sales" , 
-            "Digital Marteking"
+            "Digital Marketing"
          ],
   },
   {
@@ -53,7 +53,7 @@ const OptionsList = [
     id: 4,
     title: "Sales Leads Info",
     icon: <FaTruckFast className="h-6 w-6 " />,
-    link: "SalesLeadInfo",
+    link: "/SalesLeadInfo",
     access:[ 
             "Admin" ,
             // "Operations" , 
@@ -68,7 +68,7 @@ const OptionsList = [
     id: 4,
     title: "Sales Leads Info",
     icon: <FaTruckFast className="h-6 w-6 " />,
-    link: "int",
+    link: "/int",
     access:[ 
             // "Admin" ,
             // "Operations" , 
@@ -80,12 +80,27 @@ const OptionsList = [
          ],
   },
   {
+  id: 4,
+    title: "Lead gen Info",
+    icon: <FaTruckFast className="h-6 w-6 " />,
+    link: "/leadGenInfo",
+    access:[ 
+            "Admin" ,
+            // "Operations" , 
+            // "HR" , 
+            // "Team Lead" , 
+            // "Intern" , 
+            // "Post Sales" , 
+            // "Digital Marteking"
+         ],
+  },
+  {
     id: 5,
     title: "Lead Gen. Info",
     icon: <FaTruckFast className="h-6 w-6 " />,
     link: "/lead",
     access:[ 
-            "Admin" ,
+            // "Admin" ,
             // "Operations" , 
             // "HR" , 
             // "Team Lead" , 
@@ -136,7 +151,7 @@ const OptionsList = [
             // "Team Lead" , 
             // "Intern" , 
             // "Post Sales" , 
-            "Digital Marteking"
+            "Digital Marketing"
 
          ]
   },

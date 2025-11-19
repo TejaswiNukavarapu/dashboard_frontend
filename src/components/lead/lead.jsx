@@ -17,7 +17,7 @@ const CsvToTable = () => {
         complete: (result) => {
           setHeaders(Object.keys(result.data[0]));
           setData((prev) => [...prev, ...result.data]);
-          fetch(`${import.meta.env.VITE_BACKEND_URL}/api/lead/csv/upload`, {
+          fetch(`${import.meta.env.VITE_BACKEND_URL}/lead/csv/upload`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ rows: result.data }),
@@ -45,7 +45,7 @@ const CsvToTable = () => {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/lead/csv`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/lead/csv`)
       .then((res) => res.json())
       .then((resp) => {
         if (resp.length > 0) {

@@ -66,7 +66,7 @@ const Announcements = () => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/announcement/announcement/${id}`,
+          `${import.meta.env.VITE_BACKEND_URL}/announcement/delete/${id}`,
           { method: "DELETE" }
         );
         if (!response.ok) {

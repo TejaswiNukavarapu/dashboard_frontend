@@ -16,7 +16,7 @@ export default function TopNavBar() {
     setOpen(true);
   };
 
-  if (!userDetails) return null; // Wait for data to load
+  if (!userDetails) return null;
 
   return (
     <div className="w-full">
@@ -31,7 +31,7 @@ export default function TopNavBar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="border bg-[#004AAD] rounded-xl text-white p-2">
+          <div className="border bg-[#004AAD] rounded-xl text-white px-3 py-1.5">
             <h1 className="m-0">{safe(userDetails?.officeLocation)}</h1>
           </div>
 
@@ -39,8 +39,7 @@ export default function TopNavBar() {
             onClick={onOpen}
             title="Click to view profile"
             style={{ cursor: "pointer" }}
-            className="border bg-[#004AAD] rounded-xl text-white p-2"
-          >
+            className="border bg-[#004AAD] rounded-xl text-white px-3 py-1.5" >
             <h1 className="m-0">{safe(userDetails?.username)}</h1>
           </div>
         </div>
