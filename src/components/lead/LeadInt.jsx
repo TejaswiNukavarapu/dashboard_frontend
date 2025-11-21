@@ -274,7 +274,7 @@ const LeadInt = () => {
       if (!response.ok) throw new Error("Failed to update status");
       toast.success("Status updated successfully");
     } catch (error) {
-      toast.error("Failed to update status"); // Revert optimistic update on failure
+      toast.error("Failed to update status");
       setStatusMap((prev) => ({
         ...prev,
         [id]: leadData.find((l) => l._id === id)?.status || "Not Answered",
@@ -339,7 +339,7 @@ const LeadInt = () => {
               value={filterValue}
               onChange={(e) => {
                 setFilterValue(e.target.value);
-                setPage(1); // Reset page on filter change
+                setPage(1);
               }}
             ><option value="All">All</option>
               {[
@@ -359,7 +359,7 @@ const LeadInt = () => {
               value={selectedDate}
               onChange={(e) => {
                 setSelectedDate(e.target.value);
-                setPage(1); // reset page when date changes
+                setPage(1);
               }}
               className="border p-2 rounded"
             />

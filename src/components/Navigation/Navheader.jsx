@@ -1,8 +1,6 @@
 import React,{useContext} from "react";
-// import { Store } from "../../context/NavBarContext";
 
 export const Navheader = () => {
-//   const { open, setOpen } = useContext(Store);
   return (
     <div className="relative border-b flex items-center justify-between p-2  ">
       <div className="flex items-center gap-2">

@@ -1,5 +1,4 @@
-import { useState } from "react"
-// import pursuit from '../../assets/pursuit.png'
+import { useState } from "react";
 import Signin from "../Home/Authentication/Signin"
 function Authentication(){
 
