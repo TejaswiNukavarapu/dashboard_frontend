@@ -32,7 +32,6 @@ export default function Intern() {
          <OverviewComp title="Total Target" revenue="Rs 1,00,000" img={total} className="  "></OverviewComp>
          <OverviewComp title="Projected Revenue" revenue={`Rs ${totalProjectedRevenue}`} img={total}></OverviewComp>
          <OverviewComp title="Revenue Credited" revenue={`Rs ${totalCreditedRevenue}`} img={revenue}></OverviewComp>
-         {/* for pending amount  the subtraction of projected revenue and revenue credited */}
          <OverviewComp title="Pending Revenue" revenue={`Rs ${totalPendingRevenue}`} img={pending}></OverviewComp>
        </div>
        <div className='flex  mt-3 gap-3'>

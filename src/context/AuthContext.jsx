@@ -20,8 +20,6 @@ function AuthProvider({ children }) {
   const [loadingAuth, setLoadingAuth] = useState(true);
 
   const navigate = useNavigate();
-
-  // ✅ verify token on mount
   useEffect(() => {
     async function verifySession() {
       try {
@@ -60,8 +58,6 @@ function AuthProvider({ children }) {
 
     verifySession();
   }, []);
-
-  // ✅ login function with guaranteed navigation
   async function loginUser(credentials) {
     try {
       setLoading(true);
@@ -80,16 +76,10 @@ function AuthProvider({ children }) {
         toast.error(result.msg || "Login failed");
         return;
       }
-
-      // ✅ Save token first
       localStorage.setItem("session_token", JSON.stringify(result.token));
-
-      // ✅ Update user + login state
       setUserDetails(result.user);
       setIsLoggedIn(true);
       toast.success(result.msg || "Login successful");
-
-      // ✅ Navigate after short delay to ensure React updates state
       setTimeout(() => {
         navigate("/");
       }, 100);

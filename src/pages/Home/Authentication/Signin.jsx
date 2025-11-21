@@ -1,63 +1,3 @@
-// import React, { useEffect, useState } from 'react'
-// import toast, {Toaster} from 'react-hot-toast'
-// import { FaRegUserCircle } from "react-icons/fa";
-// import CustomInput from '../../../components/ui/CustomInput';
-// import { TbLockPassword } from "react-icons/tb";
-// import CustomButton from '../../../components/ui/CustomButton';
-// import useAuth from '../../../context/AuthContext';
-// import { useNavigate } from 'react-router';
-
-
-
-// const Signin = () => {
-
-//     const [loginLoading , setLoginLoading] = useState(false)
-
-//     const [username, setUsername] = useState("")
-//     const [password , setPassword] = useState("")
-//     const [isDisabled , setIsDisabled] = useState(true)
-
-//     const {loginUser , loading , isLoggedIn , loadingAuth} = useAuth()
-//     const navigate = useNavigate()
-
-
-//      useEffect(() => {
-//     if (!loadingAuth && isLoggedIn) {
-//       navigate("/");
-//     }
-//   }, [isLoggedIn, loadingAuth, navigate]);
-
-//     async function  onSubmitLogin(e){
-//         e.preventDefault()
-//         if(!password || !username){
-//             toast.error("All fields are mandatory")
-//             return 
-//         }
-        
-//         console.log("this is running")
-//         await loginUser({email:username , password})
-
-//     }
-
-//   return (
-//     <div className='h-screen w-screen flex flex-col justify-center items-center '>
-//       <h1 className='font-bold text-2xl mb-2'>Pursuit Future Dashboard</h1>
-//       <p className='mb-2 text-gray-600'>From where everything Starts...</p>
-//       <div  className='flex flex-col gap-4 items-center border-2 p-8 py-10 border-[#004AAD] rounded-xl'>
-//       <form onSubmit={onSubmitLogin} className='flex flex-col gap-4 w-[250px]'>
-//         <CustomInput type={"text"} title="Username" icon={<FaRegUserCircle className='text-xl text-[#004AAD]'/>} onChange={(e)=>setUsername(e.target.value)} value={username} />
-//         <CustomInput type={"password"} title="Password" icon={<TbLockPassword className='text-xl text-[#004AAD]'/>} onChange={(e)=>setPassword(e.target.value)} value={password}/>
-//         <CustomButton type={"submit"} isLoading={loading} title="Enter the portal"  />
-//       </form>
-//        <div className='-mt-2 flex'>
-//             <button className='text-sm font-semibold text-[#004AAD]' onClick={()=>{navigate('/forgotPassword')}}>Forgot Password?</button>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Signin
 import React, { useEffect, useState } from 'react'
 import toast, {Toaster} from 'react-hot-toast'
 import { FaRegUserCircle } from "react-icons/fa";
@@ -73,12 +13,10 @@ import CustomButton from '../../../components/ui/CustomButton';
 const Signin = () => {
     const [username, setUsername] = useState("")
     const [password , setPassword] = useState("")
-
+    const [showPassword, setShowPassword] = useState(false);
     const {loginUser , loading , isLoggedIn , loadingAuth} = useAuth()
     const navigate = useNavigate()
-
-    // Email validation regex (basic pattern)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
     useEffect(() => {
         if (!loadingAuth && isLoggedIn) {
@@ -86,21 +24,24 @@ const Signin = () => {
         }
     }, [isLoggedIn, loadingAuth, navigate]);
 
-    // Function to handle all front-end validation
+    const togglePasswordVisibility = () => {
+        setShowPassword(prev => !prev);
+    };
+
     function validateInput() {
-        if (!username || !password) {
-            toast.error("All fields are mandatory.");
+        if (!username) {
+            toast.error("Enter Email to proceed to next");
             return false;
         }
-
-        // 1. Email Validation (using the basic regex)
+         if (!password) {
+            toast.error("Enter password to proceed to next");
+            return false;
+        }
         if (!emailRegex.test(username)) {
-            toast.error("Please enter a valid email address.");
+            toast.error("Please enter a valid email address, Email doesn't contain capital letters and spaces");
             return false;
         }
-
-        // 2. Password Length Validation
-        if (password.length < 2) {
+        if (password.length < 6) {
             toast.error("Password must be at least 6 characters long.");
             return false;
         }
@@ -152,13 +93,20 @@ const Signin = () => {
                             value={username} 
                         />
                         <CustomInput 
-                            type={"password"} 
-                            title="Password" 
-                            icon={<TbLockPassword className='text-xl text-gray-500'/>} 
-                            secondaryIcon={<AiOutlineEye className='text-xl text-gray-500 cursor-pointer'/>}
-                            onChange={(e)=>setPassword(e.target.value)} 
-                            value={password}
-                        />
+                            type={showPassword ? "text" : "password"}
+                            title="Password" 
+                            icon={<TbLockPassword className='text-xl text-gray-500'/>} 
+                            secondaryIcon={
+                                showPassword ? (
+                                    <AiOutlineEyeInvisible className='text-xl text-gray-500 cursor-pointer' onClick={togglePasswordVisibility} />
+                                ) : (
+                                    <AiOutlineEye className='text-xl text-gray-500 cursor-pointer' onClick={togglePasswordVisibility} />
+                                )
+                            }
+                            onChange={(e)=>setPassword(e.target.value)} 
+                            value={password}
+                            required
+                        />
                         <CustomButton 
                             type={"submit"} 
                             isLoading={loading} 

@@ -9,13 +9,11 @@ const CustomSelect = ({
   name,
   register,
 }) => {
-  //   const id = title?.toLowerCase().replace(/\s+/g, '-');
   console.log("options ", options)
 
   return (
     <div className='flex flex-col p-2  w-full'>
       <select
-        // id={id}
         name={name}
         value={value}
         onChange={onChange}

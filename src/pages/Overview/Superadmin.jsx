@@ -8,8 +8,6 @@ import AnnouncementsOverView from '../../components/AnnouncementsOverView'
 import { useGetProjectedRevenueQuery } from '../../Slice/OverviewSlice'
 
 export default function Superadmin() {
-
-  // Local state
   const [revenueData, setRevenueData] = useState(0);
   const [paidData, setPaidData] = useState(0);
   const [studentCount, setStudentCount] = useState(0);
@@ -28,8 +26,6 @@ export default function Superadmin() {
     }
     fetchRevenueData();
   }, []);
-
-  // Fetch paid revenue
   useEffect(() => {
     async function fetchPaidData() {
       try {
@@ -42,8 +38,6 @@ export default function Superadmin() {
     }
     fetchPaidData();
   }, []);
-
-  // Fetch student count
   useEffect(() => {
     async function fetchStudentCount() {
       try {
@@ -56,8 +50,6 @@ export default function Superadmin() {
     }
     fetchStudentCount();
   }, []);
-
-  // Fetch intern count
   useEffect(() => {
     async function fetchInternCount() {
       try {
@@ -70,8 +62,6 @@ export default function Superadmin() {
     }
     fetchInternCount();
   }, []);
-
-  // Custom RTK Query hook
   const { data, isLoading, error } = useGetProjectedRevenueQuery();
 
   if (isLoading) return <p>Loading revenue data...</p>;

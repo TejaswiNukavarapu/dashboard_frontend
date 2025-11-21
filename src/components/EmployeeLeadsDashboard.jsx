@@ -9,7 +9,6 @@ const EmployeeLeadsDashboard = () => {
   const [employeeInfo, setEmployeeInfo] = useState({});
   const [statusSummary, setStatusSummary] = useState({});
 
-  // Get logged-in user from AuthContext
   const { userDetails } = useAuth();
   const loggedInUserId = userDetails?._id || userDetails?.id || '67e4f1a2b3c4d5e6f7890123'; // Fallback for testing
 
@@ -106,7 +105,6 @@ const EmployeeLeadsDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="flex justify-between items-center">
             <div>
@@ -121,8 +119,6 @@ const EmployeeLeadsDashboard = () => {
             </div>
           </div>
         </div>
-
-        {/* Status Summary */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <h2 className="text-lg font-semibold mb-4">Status Summary</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -134,8 +130,6 @@ const EmployeeLeadsDashboard = () => {
             ))}
           </div>
         </div>
-
-        {/* Filter */}
         <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
           <div className="flex items-center gap-4">
             <label className="text-sm font-medium text-gray-700">Filter by Status:</label>
@@ -153,8 +147,6 @@ const EmployeeLeadsDashboard = () => {
             </div>
           </div>
         </div>
-
-        {/* Leads Table */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -229,8 +221,6 @@ const EmployeeLeadsDashboard = () => {
             </table>
           </div>
         </div>
-
-        {/* Debug Info */}
         <div className="mt-6 p-4 bg-gray-100 rounded-lg text-sm text-gray-600">
           <div className="grid grid-cols-2 gap-4">
             <div>Logged-in User ID: {loggedInUserId}</div>
