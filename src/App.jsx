@@ -90,7 +90,7 @@ function App() {
             <Route path="/employees/:teamId/attendence" element={<AttendanceCalendar />} />
             <Route path="/" Component={Superadmin} /> 
             <Route path="/abc" Component={Admins} />
-            <Route path="/spfroles" Component={SpfRoles} />
+            <Route path="/spf/:teamId/abcdef" Component={SpfRoles} />
         </Routes>
     }
 
