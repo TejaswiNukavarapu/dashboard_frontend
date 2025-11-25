@@ -14,13 +14,13 @@ const Employees = () => {
   const [teams, setTeams] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
+  console.log("teamid......this is the team id", teamId);
   const TeamsEmployee = async () => {
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/team/team/${team || teamId}`
-      );
+      const res = await fetch(`http://localhost:3000/api/user?role=${teamId}`);
       const data = await res.json();
-      setTeams(data);
+      setTeams(data.data);
       console.log("teamemployee", data);
     } catch (error) {
       console.error("Error fetching team employees:", error);
@@ -63,27 +63,28 @@ const Employees = () => {
     }
   };
 
+//   const category = "Digital Marketing";
+// const clean = category.replace(/\s+/g, "-");
+// // "Digital-Marketing"
+// navigate(`/spf/${clean}/abcdef`);
+
+
   const columns = [
     {
       id: "username",
       header: "Employee Name",
       cell: (row) => (
-        <button
-          onClick={() =>
-            navigate(`/employees/${row._id}/attendence`, { state: row })
-          }
-        >
+        
           <div className="flex justify-center items-center gap-2">
             <p className="text-[#004aad]">{row.username}</p>
-            <img src={arrow} alt="arrow" className="w-3 h-3" />
+            {/* <img src={arrow} alt="arrow" className="w-3 h-3" /> */}
           </div>
-        </button>
       ),
     },
     { id: "email", header: "Email" },
     { id: "phone", header: "Contact" },
     { id: "whatsappNumber", header: "WhatsApp" },
-    { id: "location", header: "Location" },
+    { id: "officeLocation", header: "Location" },
     {
       id: "actions",
       header: "Actions",
@@ -99,9 +100,9 @@ const Employees = () => {
 
   return (
     <div className="p-5">
-      <h2 className="text-xl font-bold mb-4">Employees</h2>
+      <h2 className="text-xl font-bold mb-4">{teamId} Team</h2>
 
-      <Table data={teams?.employees || []} columns={columns} />
+      <Table data={teams} columns={columns} />
     </div>
   );
 };

@@ -24,29 +24,29 @@ export default function Admins() {
   }, [])
 
   // Fetch Roles (Teams)
-  const Teams = async () => {
-    try {
-      const data = await fetch(`http://localhost:3000/api/users/roles`)
-      const response = await data.json()
-      console.log("team..........", response)
+const Teams = async () => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/users/roles`);
+    const response = await res.json();
+    console.log("team..........", response);
 
-      // convert roles array -> table row objects
-      const formatted = response.roles.map((role) => ({
-        roles: role,
-        employeeCount: 0,       //  will fill later if you want
-        contact: "-",
-        paymentCount: 0,
-        _id: role               // for navigation button
-      }))
+    // response.data = array from your backend
+    const formatted = response.data.map((item) => ({
+      _id: item._id,        // department name
+      count: item.count,    // number of members
+      contact: "-",         // placeholder if needed
+      paymentCount: 0       // placeholder
+    }));
 
-      setTeam(formatted)
-      console.log("team set → ", formatted)
-    } catch (error) {
-      console.log("error occured", error)
-    } finally {
-      setLoading(false)
-    }
+    setTeam(formatted);
+    console.log("team set → ", formatted);
+  } catch (error) {
+    console.log("error occured", error);
+  } finally {
+    setLoading(false);
   }
+};
+
 
   useEffect(() => {
     Teams()
@@ -60,14 +60,25 @@ export default function Admins() {
     console.log("edit", row)
   }
 
+
+//     const category = "Digital Marketing";
+// const clean = category.replace(/\s+/g, "-");
+// // "Digital-Marketing"
+// navigate(`/spf/${clean}/abcdef`);
+
+  ///teams/${row._id}/employees
   const columns = [
     {
-      id: 'roles',
+      id: '_id',
       header: 'Team Name',
       cell: (row) => (
-        <button onClick={() => navigate(`/spfroles`, { state: row._id })}>
+
+        ///spf/:teamId/abcdef
+
+        console.log("row id........kjnnioo kniisodn ...", row._id),
+        <button onClick={() => navigate(`/spf/${row._id}/abcdef`, { state: row._id })}>
           <div className='flex jusify-center align-center item-center gap-2'>
-            <p className='text-[#004aad]'>{row.roles}</p>
+            <p className='text-[#004aad]'>{row._id}</p>
             <img src={arrow} alt="arrow" className='w-3 h-3' />
           </div>
         </button>
@@ -78,30 +89,31 @@ export default function Admins() {
       id: 'No. of Members',
       header: 'No. of Members',
       cell: (row) => (
-        <div>{row.employeeCount}</div>
+        <div className='ml-10'>{row.count}</div>
       )
     },
 
-    { id: 'contact', header: 'Contact Number' },
-    { id: 'Payment Count', header: 'Payment Count' },
+    // { id: 'contact', header: 'Contact Number' },
+    // { id: 'Payment Count', header: 'Payment Count' },
 
     {
       id: "actions",
       header: "Actions",
       cell: (row) => (
-        <div className="flex gap-5 ml-5">
+        <div className="flex gap-1 ml-1">
           <button onClick={() => handleDelete(row._id)}>
             <img src={Delete} className="w-5 h-6" />
           </button>
-          <button onClick={() => { handleEdit(row) }}>
+          {/* <button onClick={() => { handleEdit(row) }}>
             <img src={Edit} alt="Edit" className="w-7 h-7" />
-          </button>
+          </button> */}
         </div>
       ),
     },
   ]
 
   return (
+    
     <div>
       <h1>Admins</h1>
       <Table data={team} columns={columns} />
