@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CustomSelect from "../button/CustomSelect";
 import CustomInput from "../ui/CustomInput";
 import useFetchEmployees from "../../utils/useFetchEmployeesUtils";
-import useAuth from "../../context/AuthContext"; // your real hook
+import useAuth from "../../context/AuthContext"; 
 
 function MarkAttendance() {
     const { userDetails, loading: authLoading } = useAuth();
@@ -79,9 +79,7 @@ function MarkAttendance() {
 
     if (!hrLocation)
         return (
-            <p className="text-red-600 font-bold">
-                HR office location missing. Cannot load employees.
-            </p>
+            <p className="text-red-600 font-bold">  HR office location missing. Cannot load employees.</p>
         );
 
     if (employeesLoading)
@@ -89,32 +87,19 @@ function MarkAttendance() {
 
     if (message)
         return (
-            <p className="text-red-600 font-semibold">
-                {message}
-            </p>
+            <p className="text-red-600 font-semibold"> {message}</p>
         );
     return (
         <div className="p-4">
-            <h2 className="text-[#444444] text-xl font-DMSans p-1">
-                Mark Attendance
-            </h2>
-
-            <p className="text-sm text-gray-500 mb-4">
-                Showing employees for office: <b>{hrLocation}</b>
-            </p>
-
+            <h2 className="text-[#444444] text-xl font-DMSans p-1">Mark Attendance </h2>
+            <p className="text-sm text-gray-500 mb-4">Showing employees for office: <b>{hrLocation}</b></p>
             <div className="flex-1 overflow-y-auto max-h-[400px] max-w-[500px] scrollbar-hide">
                 <div className="flex flex-col gap-4">
                     {employees.length === 0 ? (
-                        <p className="text-gray-500">
-                            No active employees in <b>{hrLocation}</b>.
-                        </p>
+                        <p className="text-gray-500">No active employees in <b>{hrLocation}</b>.</p>
                     ) : (
                         employees.map((emp) => (
-                            <div
-                                key={emp.employee}
-                                className="flex items-center justify-between pb-3 gap-2 border-b border-gray-200"
-                            >
+                            <div key={emp.employee} className="flex items-center justify-between pb-3 gap-2 border-b border-gray-200" >
                                 <div className="flex flex-col text-[#444444] w-[180px]">
                                     <p className="font-semibold">{emp.employeeId}</p>
                                     <p className="text-sm">{emp.empname}</p>
@@ -127,30 +112,11 @@ function MarkAttendance() {
                                         { id: "Leave", label: "Leave" },
                                     ]}
                                     value={emp.attendance}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            emp.employee,
-                                            "attendance",
-                                            e.target.value
-                                        )
-                                    }
+                                    onChange={(e) => handleChange(  emp.employee, "attendance", e.target.value )}
                                 />
-                                <CustomInput
-                                    type="text"
-                                    title="Remark"
-                                    value={emp.remark}
-                                    onChange={(e) =>
-                                        handleChange(
-                                            emp.employee,
-                                            "remark",
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder={
-                                        emp.attendance !== "Present"
-                                            ? "Reason"
-                                            : "No"
-                                    }
+                                <CustomInput type="text" title="Remark" value={emp.remark}
+                                    onChange={(e) => handleChange( emp.employee, "remark", e.target.value )}
+                                    placeholder={emp.attendance !== "Present"? "Reason": "No"  }
                                 />
                             </div>
                         ))

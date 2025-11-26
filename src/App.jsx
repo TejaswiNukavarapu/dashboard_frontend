@@ -81,6 +81,7 @@ function App() {
             <Route path="/super" Component={Superadmin} />
             <Route path="/teaminfo" Component={Teaminformation} />
             <Route path='/salesLeadInfo' Component={SalesLeadsInfo} />
+            <Route path='/studentsinfo' Component={StudentsInfo} />
             <Route path='/leadGenInfo' Component={LeadLeads} />
             <Route path='/pay' Component={Payment} />
             <Route path='/dps' Component={Dps} />

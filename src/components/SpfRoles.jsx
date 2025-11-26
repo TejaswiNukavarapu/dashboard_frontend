@@ -4,7 +4,7 @@ import arrow from "../assets/arrow.png";
 import Delete from "../assets/Teaminfo/delete.svg";
 import toast from "react-hot-toast";
 import Table from "./table";
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"; 
 const Employees = () => {
   const { teamId } = useParams();
   const location = useLocation();
@@ -100,6 +100,13 @@ const Employees = () => {
 
   return (
     <div className="p-5">
+       <button
+        onClick={() => navigate(-1)}
+         className="flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4"
+       >
+         <ArrowBackIcon />
+         <span className="text-[16px] font-medium">Back</span>
+       </button>
       <h2 className="text-xl font-bold mb-4">{teamId} Team</h2>
 
       <Table data={teams} columns={columns} />

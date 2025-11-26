@@ -85,7 +85,7 @@ const interntarget = internCount*100000
       Statistics
     </h1>
     </div>
-    <div className='w-full hpx-4 py-6'>
+    <div className='w-auto mr-5 hpx-4 py-6'>
       <div className='flex gap-2'>
         <OverviewComp title="Total Target" revenue={interntarget} img={total} />
         <OverviewComp title="Projected Revenue" revenue={`Rs ${totalProjectedRevenue}`} img={total} />

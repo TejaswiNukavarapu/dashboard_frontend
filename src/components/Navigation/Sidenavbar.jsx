@@ -18,7 +18,7 @@ const {open,setOpen}=useContext(Store)
       <div
 
         className={`bg-[#004aad] ml-1 my-2 pt-2 rounded-[20px] transition-all duration-300 ease-in-out
-        ${open ? "w-76 pl-3" : "w-20 p-2"} overflow-hidden`}
+        ${open ? "w-80 pl-3" : "w-20 p-2"} overflow-hidden`}
       >
        <Navheader/>
        <Scrollbody/>

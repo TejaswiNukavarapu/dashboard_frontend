@@ -11,9 +11,9 @@ const SalesLeads = () => {
   const [month, setMonth] = useState('');
   const [teamName, setTeamName] = useState('');
   const [username, setUsername] = useState('');
-  const [statusFilter, setStatusFilter] = useState(''); // ⬅️ NEW State for Status Filter
+  const [statusFilter, setStatusFilter] = useState('');
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(20);
   const [totalPages, setTotalPages] = useState(1);
   const [teams, setTeams] = useState([]);
   const [teamMembers, setTeamMembers] = useState([]);
