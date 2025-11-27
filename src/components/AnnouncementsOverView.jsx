@@ -129,10 +129,10 @@
           </h1>
 
           {latestAnnouncement ? (
-            <div className="flex gap-4 items-start">
+            <div className="flex gap-4 flex-row items-start">
 
               {latestAnnouncement.image ? (
-                <div className="w-auto h-72 rounded-md overflow-hidden bg-gray-200">
+                <div className="w-auto h-72 rounded-md overflow-hidden bg-gray-200 flex-shrink-0">
                   <img
                     src={`${import.meta.env.VITE_BACKEND_URL}${latestAnnouncement.image}`}
                     alt="Announcement"
