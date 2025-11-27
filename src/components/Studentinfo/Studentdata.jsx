@@ -14,16 +14,16 @@ export default function Studentdata() {
     const [file, setFile] = useState(null);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
-    const [limit] = useState(5);
+    const [limit] = useState(20);
     const [totalPages, setTotalPages] = useState(0);
     const [course, setCourse] = useState('');
     const [month, setMonth] = useState("");
     const [programType, setProgramType] = useState("");
     const [isLoading, setIsLoading] = useState(false); 
 
-    const disableCsvUpload = userDetails?.role === "Post Sales" || userDetails?.role === "Intern";
+    const disableCsvUpload = userDetails?.role === "Admin" || userDetails?.role === "Post Sales" || userDetails?.role === "Intern";
     
-    const disablePaymentStatus = userDetails?.role === "Operations" || userDetails?.role === "Intern";
+    const disablePaymentStatus = userDetails?.role === "Operations" || userDetails?.role === "Intern" || userDetails?.role === "Admin";
     const fetchStudents = async () => {
         console.log("Studentdata: Starting data fetch..."); 
         setIsLoading(true); 

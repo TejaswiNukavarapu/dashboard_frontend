@@ -5,7 +5,7 @@ const DpsDataPage = ({ onAddDps }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [limit] = useState(10);
+  const [limit] = useState(15);
   const [totalPages, setTotalPages] = useState(1);
   const [preferredMonth, setPreferredMonth] = useState("");
   const [allMembers, setAllMembers] = useState([]);
@@ -17,7 +17,7 @@ const DpsDataPage = ({ onAddDps }) => {
   const userId = userDetails?._id;
 
   const isRestricted =
-    role === "Admin" || role === "Post Sales" || role === "Operations";
+   role === "Post Sales" || role === "Operations";
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -76,11 +76,8 @@ const DpsDataPage = ({ onAddDps }) => {
       <main className="flex-1 flex pb-5 flex-col">
         <div className="flex items-center pb-5 justify-between">
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-semibold text-gray-800">
-              DPS Student Data
-            </h1>
-            <select
-              value={oneEmp}
+            <h1 className="text-xl font-semibold text-gray-800"> DPS Student Data </h1>
+            <select value={oneEmp}
               onChange={(e) => {
                 const selectedId = e.target.value;
                 setOneEmp(selectedId);
@@ -89,23 +86,17 @@ const DpsDataPage = ({ onAddDps }) => {
               }}
               disabled={role === "Intern"}
               className={`border border-gray-300 rounded-lg px-3 py-2 shadow-sm ${
-                role === "Intern"
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "focus:outline-none focus:ring-2 focus:ring-blue-500"
-              }`}
+                role === "Intern"? "bg-gray-100 text-gray-400 cursor-not-allowed": "focus:outline-none focus:ring-2 focus:ring-blue-500" }`}
             >
               <option value="">All Employees</option>
               {allMembers?.map((member) => (
-                <option key={member._id} value={member._id}>
-                  {member.username}
-                </option>
+                <option key={member._id} value={member._id}>{member.username}</option>
               ))}
             </select>
           </div>
 
           <div className="flex items-center gap-3">
-            <select
-              value={preferredMonth}
+            <select value={preferredMonth}
               onChange={(e) => {
                 setPreferredMonth(e.target.value);
                 setPage(1);
@@ -117,9 +108,7 @@ const DpsDataPage = ({ onAddDps }) => {
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December",
               ].map((month) => (
-                <option key={month} value={month}>
-                  {month}
-                </option>
+                <option key={month} value={month}> {month}</option>
               ))}
             </select>
 
@@ -127,13 +116,8 @@ const DpsDataPage = ({ onAddDps }) => {
               onClick={!isRestricted ? onAddDps : undefined}
               disabled={isRestricted}
               className={`px-5 py-2 rounded-lg shadow transition font-medium ${
-                isRestricted
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-[#004AAD] text-white hover:bg-blue-800"
-              }`}
-            >
-              + Add DPS
-            </button>
+                isRestricted? "bg-gray-300 text-gray-500 cursor-not-allowed": "bg-[#004AAD] text-white hover:bg-blue-800"
+              }`}> + Add DPS</button>
           </div>
         </div>
 

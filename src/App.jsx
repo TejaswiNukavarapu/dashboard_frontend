@@ -31,6 +31,8 @@ import PostSales from "./pages/Overview/PostSales";
 import DigitalMarketing from "./pages/Overview/DigitalMarketing";
 import UnAuthorized from "./pages/UnAuthorized"; // Assuming you have this page
 import LeadLeads from './components/lead/LeasLeads'
+import Admins from './pages/Admins'
+import SpfRoles from './components/SpfRoles'
 
 const siderBarAvoiders = [
     "/login",
@@ -79,6 +81,7 @@ function App() {
             <Route path="/super" Component={Superadmin} />
             <Route path="/teaminfo" Component={Teaminformation} />
             <Route path='/salesLeadInfo' Component={SalesLeadsInfo} />
+            <Route path='/studentsinfo' Component={StudentsInfo} />
             <Route path='/leadGenInfo' Component={LeadLeads} />
             <Route path='/pay' Component={Payment} />
             <Route path='/dps' Component={Dps} />
@@ -87,6 +90,8 @@ function App() {
             <Route path="/teams/:teamId/employees" element={<TeamEmployees />} />
             <Route path="/employees/:teamId/attendence" element={<AttendanceCalendar />} />
             <Route path="/" Component={Superadmin} /> 
+            <Route path="/abc" Component={Admins} />
+            <Route path="/spf/:teamId/abcdef" Component={SpfRoles} />
         </Routes>
     }
 
